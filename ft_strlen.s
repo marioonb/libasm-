@@ -1,13 +1,14 @@
+SECTION .TEXT
+	GLOBAL	ft_strlen
 
-global	init
-section	.text
-init :
-		mov rax, 0
 ft_strlen :
+		mov rax, 0
+
+while :
 		cmp byte[rdi+rax], 0
-		jne end
+		je end
 		inc rax
-		jmp ft_strlen
+		jmp while
 
 end :
 	ret

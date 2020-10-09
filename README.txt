@@ -64,13 +64,6 @@ Le retour se fait par le registre rax.
 
 assemble -> nasm -f elf64 main.c ft_strlen.s -o ft_strlen.o
 
-#size_t 	ft_strlen ( const  char * str)
-#{
-#	int i;
-#
-#	i = 0 ;
-#	while (str [i]! = ' \ 0 ' )
-#		i ++;
-#	retour (i);
-#}
-#
+
+nasm -f macho64 ft_strlen.s -o ft_strlen.o
+gcc main.c nom ft_strlen.o
