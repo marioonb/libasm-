@@ -62,8 +62,6 @@ c'est à dire que, à la fin de ta fonction (au moment du ret) ils doivent avoir
 Tu as bien sûr le droit de les utiliser, mais tu dois alors sauvegarder leur valeur pour pouvoir la restituer.
 Le retour se fait par le registre rax.
 
-assemble -> nasm -f elf64 main.c ft_strlen.s -o ft_strlen.o
+assemble -> nasm -f elf64 ft_strlen.s -o ft_strlen.o
 
-
-nasm -f macho64 ft_strlen.s -o ft_strlen.o
 gcc main.c nom ft_strlen.o

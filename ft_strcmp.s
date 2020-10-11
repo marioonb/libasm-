@@ -1,33 +1,30 @@
 SECTION .TEXT
-    GLOBAL ft_strcmp 
+GLOBAL ft_strcmp 
 
 ft_strcmp :
-		mov rax, 0
-        mov rcx, 0
+    mov rax, 0
+    mov dl, 0
 
-verif :
-        cmp BYTE [rdi + rax], 0              ; regarde si s1 est null 
-        mov rcx, 1                           ; met rcx a 1 si oui 
-        cmp BYTE[rdx + rax], 0               ; regarde si s2 est null
-        mov rcx, 1                           ; met rcx a 1 si oui 
+verif_null :
+    mov dl, BYTE [rdi + rax]            ; met la valeur de s1 dans dl
+    cmp BYTE [rdi + rax], 0             ; regarde si s1[rax] est null 
+    je soustraction                     ; si oui va etiquette soustraction
+    cmp BYTE[rsi + rax], 0              ; regarde si s2 est null 
+    je end2                             ; si oui va a l etiquette end2
 
-while : 
-    cmp rcx, 0                              ; regarde si rcx est a 0
-    je end                                  ; si il est = a 0, il va a la fin et renvoi rax
-    mov dl, BYTE [rdi + rax]                ; met la valeur de s1 dans dl    
-    cmp BYTE [rdx + rax], dl                ; conpare s2 et s1 donc byte et dl
-    je inc                                  ; si elles sont egales il ca a inc
-    jmp end2                                ; sinon il va a end2
+test_diff : 
+    cmp BYTE [rsi + rax], dl ; compare s1 et s2     ; compare s2[rax] et dl docn s1[rax]
+    jne soustraction ; sinon tu vas a end 2         ; si different va a soustraction
+    inc rax                                         ; sinon incremente rax
+    jmp verif_null ; et recommence au debut         ; retourne a l etiquette verif
 
-inc :
-    inc rax                                 ; il increment rax 
-    jmp while                               ; et recommence au debut 
+soustraction :
+    sub dl, BYTE[rsi + rax]                  ; soustrait s2[rax] a dl donc s1[rax]
 
 end2 :
-    sub dl, BYTE[rdx + rax]                 ; il sousstrait s2 a s1 dans s1 soit dl 
-    movsx rax, dl                           ; met s1 dns rax donc dl dans rax, pkoi movsx ??
-    ret                                     ; retourne rax
+    movsx rax, dl                   ; met dl donc s1[rax] dans rax
+    ret                             ; retourne rax
 
 end :
-    mov rax, 0                               ; remet rax a 0 avant de l'envoyer
-    ret                                      ; renvoi rax donc 0
+mov rax, 0                          ; remet rax a 0 avant de l'envoyer
+ret                                 ; renvoi rax donc 0
