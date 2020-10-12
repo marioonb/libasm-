@@ -1,22 +1,18 @@
 SECTION .TEXT 
     GLOBAL ft_strcpy
 
-
 ft_strcpy :
-		mov rax, 0
-        mov rcx, 0
+        mov rax, 0
 
 while : 
-    cmp Byte [rsi + rax], 0
+    cmp BYTE[rsi + rax], 0
     je end
-    mov dl, Byte[]
+    mov dl, BYTE[rsi + rax]
+    mov BYTE [rdi + rax], dl 
+    inc rax
+    jmp while
     
-    mov  
-    mov 
-    inc rax 
-    jmp ft_strcpy
-
-end 
-
- mov BYTE [rdi + rax], 0
+end :
+ mov BYTE [rdi + rax], 0 
+ mov rax, rdi
  ret

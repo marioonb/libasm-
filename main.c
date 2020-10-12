@@ -7,15 +7,15 @@
 
 
 //extern size_t		ft_strlen(const char *a);
-extern int			ft_strcmp(char const *s1, char const *s2);
-//char		*ft_strcpy(const char *dst, const char *src);
+//extern int			ft_strcmp(char const *s1, char const *s2);
+extern char		*ft_strcpy(char *dst, char *src);
 //ssize_t		ft_write(int fd, void const *buf, size_t nbyte);
 //ssize_t		ft_read(int fd, void *buf, size_t nbyte);
 //char		*ft_strdup(char const *s1);
 
 
 //#define STRLEN(x)			printf("[%s] = (%d), mon strlen = (%d)\n", x, (int)strlen(x), (int)ft_strlen(x));
-# define STRCPY(d, s)		printf("[%s] et [%s] renvoi (%s), mon strcpy renvoi (%s)\n", d, s, strcpy(d, s), ft_strcpy(d, s));
+# define STRCPY(d, s)		printf("la dest [%s]", d); printf(" et la source [%s] copie dans dest = (%s), mon strcpy renvoi (%s)\n", s, strcpy(d, s), ft_strcpy(d, s));
 //# define STRCMP(a, b)		printf("[%s] et [%s] = (%d), mon strcmp (%d)\n", a, b, strcmp(a, b), ft_strcmp(a, b));
 //# define WRITE(fd, s, x)	printf("^%ld (`%s`:%ld)\n", ft_write(fd, s, x), s, x);
 //# define READ(fd, b, x)		printf("`%s`:%ld\n", b, x);
@@ -28,8 +28,8 @@ int main ()
 //const char *s = "hello";
 
 // Pour ft_strcpy
-const char *dst = "42";
-const char *src = "ca va";
+char dst[10] = "4y"; 
+char src[10] = "cfdd";
 
 // Pour ft_strcmp
 //char *s2 = "obfddfeww";
@@ -43,7 +43,6 @@ const char *src = "ca va";
 
 // Pour ft_strdup
 //const char *str = "bienvenue";
-
 
 //STRLEN(s);
 STRCPY (dst, src);
