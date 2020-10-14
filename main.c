@@ -10,7 +10,7 @@ extern size_t		ft_strlen(const char *a);
 extern int			ft_strcmp(char const *s1, char const *s2);
 extern char			*ft_strcpy(char *dst, char *src);
 extern size_t		ft_write(int fd, void const *buf, size_t nbyte);
-extern size_t			ft_read(int fd, void *buf, size_t nbyte);
+extern size_t		ft_read(int fd, void *buf, size_t nbyte);
 char				*ft_strdup(char const *s1);
 
 
@@ -61,7 +61,7 @@ int main ()
 	printf("\nft_read renvoi %d\n", (int)ft_read(fd2, buf, 11));
 	printf ("le buffer = %s\n\n", buf);
 	
-// Pour ft_strdup
+	// Pour ft_strdup
 	printf("****STRDUP****\n");
 	const char *str = "bienvenue";
 	STRDUP (str);

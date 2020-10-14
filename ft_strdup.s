@@ -2,7 +2,7 @@ SECTION .TEXT
 	GLOBAL	ft_strdup
 
 extern ft_strcpy
-extern ft_strlen
+extern ft_strlen;
 extern malloc
 
 ft_strdup :
