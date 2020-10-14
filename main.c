@@ -6,55 +6,66 @@
 #include <errno.h>
 
 
-//extern size_t		ft_strlen(const char *a);
-//extern int			ft_strcmp(char const *s1, char const *s2);
-//extern char		*ft_strcpy(char *dst, char *src);
-//extern size_t		ft_write(int fd, void const *buf, size_t nbyte);
-//ssize_t		ft_read(int fd, void *buf, size_t nbyte);
-char		*ft_strdup(char const *s1);
+extern size_t		ft_strlen(const char *a);
+extern int			ft_strcmp(char const *s1, char const *s2);
+extern char			*ft_strcpy(char *dst, char *src);
+extern size_t		ft_write(int fd, void const *buf, size_t nbyte);
+extern size_t			ft_read(int fd, void *buf, size_t nbyte);
+char				*ft_strdup(char const *s1);
 
 
-//#define STRLEN(x)			printf("[%s] = (%d), mon strlen = (%d)\n", x, (int)strlen(x), (int)ft_strlen(x));
-//# define STRCPY(d, s)		printf("la dest [%s]", d); printf(" et la source [%s] copie dans dest = (%s), mon strcpy renvoi (%s)\n", s, strcpy(d, s), ft_strcpy(d, s));
-//# define STRCMP(a, b)		printf("[%s] et [%s] = (%d), mon strcmp (%d)\n", a, b, strcmp(a, b), ft_strcmp(a, b));
-//# define WRITE(fd, s, x)	printf("^%ld (`%s`:%ld)\n", ft_write(fd, s, x), s, x);
-//# define READ(fd, b, x)		printf("`%s`:%ld\n", b, x);
-# define STRDUP(s)			printf("stdup renvoi (%s), mon strdup renvoi (%s) \n", strdup(s), ft_strdup(s));
+#define STRLEN(x)			printf("[%s] = (%d), mon strlen = (%d)\n\n", x, (int)strlen(x), (int)ft_strlen(x));
+#define STRCPY(d, s)		printf("la dest [%s]", d); printf(" et la source [%s] copie dans dest = (%s), mon strcpy renvoi (%s)\n\n", s, strcpy(d, s), ft_strcpy(d, s));
+#define STRCMP(a, b)		printf("[%s] et [%s] = (%d), mon strcmp (%d)\n\n", a, b, strcmp(a, b), ft_strcmp(a, b));
+#define STRDUP(s)			printf("stdup renvoi (%s), mon strdup renvoi (%s)\n\n", strdup(s), ft_strdup(s));
 
 int main ()
 {
-
 // Pour ft_strlen
-//const char *s = "hello";
+	printf("****STRLEN****\n");
+	const char *s = "hello";
+	STRLEN(s);
 
 // Pour ft_strcpy
-//char dst[10] = "4y"; 
-//char src[10] = "cfdd";
+	printf("****STRLCPY****\n");
+	char dst[10] = "4y"; 
+	char src[10] = "cfdd";
+	STRCPY (dst, src);
 
 // Pour ft_strcmp
-//char *s2 = "obfddfeww";
-//char *s3 = "kjh";
+	printf("****STRCMP****\n");
+	char *s2 = "obfddfeww";
+	char *s3 = "kjh";
+	STRCMP(s2, s3);
 
-// Pour ft_write && ft_read
-//int write_fd =  STDOUT_FILENO;
-//int read_fd = STDIN_FILENO;
-//const void *buf = NULL;
-//size_t nbyte = 1;
+// Pour ft_write
+	printf("****WRITE****\n");
+	int fd = open("test_write.txt", O_WRONLY);
+	//int fd = 1; 
+	char *s4 = "salut";
+	int x = strlen(s);
 
+	printf("\twrite doit renvoyer %d\n", (int)write(fd, s4, x)); 
+	printf("\tmon ft_write renvoi %d\n\n", (int)ft_write(fd, s4, x));
+
+// Pour ft_read	
+	printf("****READ****\n");
+	int fd2 = open("test_read.txt", O_RDONLY);
+	char buf[11];
+	
+	printf("\nread renvoi %d\n", (int)read(fd2, buf, 11));
+	printf ("le buffer = %s\n", buf);
+	close (fd2); 
+
+	fd2 = open("test_read.txt", O_RDONLY); 
+	printf("\nft_read renvoi %d\n", (int)ft_read(fd2, buf, 11));
+	printf ("le buffer = %s\n\n", buf);
+	
 // Pour ft_strdup
-const char *str = "bienvenue";
+	printf("****STRDUP****\n");
+	const char *str = "bienvenue";
+	STRDUP (str);
 
-//STRLEN(s);
-//STRCPY (dst, src);
-//STRCMP(s2, s3);
-//WRITE (write_fd, buf, nbyte);
-//READ (read_fd, buf, nbyte);
-STRDUP (str);
-
-
-
-  
-return(0);
-
+  	return(0);
 }
 

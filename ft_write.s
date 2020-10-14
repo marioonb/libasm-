@@ -1,25 +1,19 @@
 SECTION .TEXT
 	GLOBAL	ft_write
 
+extern __errno_location
+
 ft_write :
-		mov rax, 0
-        mov rcx, 0 
-
-; fd -> rdi, buff -> rsi, size -> rdx 
-
-verif fd :
-    cmp rdi, 1
-    je error
-
-fonction :
-    cmp rdx, rcx
-    jl end
-    mov BYTE[rsi + rcx], dl
-    ; sortir dl sur sortie
-    inc rcx
+		mov rax, 1
+        syscall
+        cmp rax, 0   ; conpare a 0
+        jl error             ; si plus petit que 0 jmp error
+        ret 
 
 error : 
-    
-
-end 
-    leave 
+    neg rax         
+    mov rdx, rax 
+    call __errno_location   ; mettre un pointeur sur errno dans rax 
+    mov [rax], rdx          ; mettre la valeur du pointeur dans rdx
+    mov rax, -1             ; mettre rax a -1 pour renvoyer l erreur 
+    ret 

@@ -65,3 +65,9 @@ Le retour se fait par le registre rax.
 assemble -> nasm -f elf64 ft_strlen.s -o ft_strlen.o
 
 gcc main.c nom ft_strlen.o
+
+appel system
+0	read	0x00	unsigned int fd	char *buf	size_t count	-	-	-	fs/read_write.c:460
+1	write	0x01	unsigned int fd	const char *buf	size_t count	-	-	-	fs/read_write.c:477
+2	open	0x02	const char *filename	int flags	umode_t mode	-	-	-	fs/open.c:1046
+3	close	0x03	unsigned int fd	-	-	-	-	-	fs/open.c:1117

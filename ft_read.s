@@ -1,25 +1,19 @@
 SECTION .TEXT
 	GLOBAL	ft_read
 
+extern __errno_location
+
 ft_read :
 		mov rax, 0
-        mov rcx, 0 
-
-; fd -> rdi, buff -> rsi, size -> rdx 
-
-verif fd :
-    cmp rdi, 0
-    je error
-
-fonction :
-    cmp rdx, rcx
-    jl end
-    mov BYTE[rsi + rcx], dl
-    ; entrer dl sur entree
-    inc rcx
+        syscall
+        cmp rax, 0
+        jl error
+        ret 
 
 error : 
-    
-
-end 
-    leave 
+    neg rax
+    mov rdx, rax 
+    call __errno_location
+    mov [rax], rdx
+    mov rax, -1
+    ret
