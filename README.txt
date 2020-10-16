@@ -1,6 +1,5 @@
 syntaxe intel : instruction, destination, source
 
-
 .bss variable non initialisé
 .data variable initialisé
 .text cde executable -> printf

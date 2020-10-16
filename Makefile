@@ -15,24 +15,24 @@ NAME = libasm.a
 TEST = test
 
 %.o: %.s
-	$(NA) $(NA_FLAGS) $<
+	@$(NA) $(NA_FLAGS) $<
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 clean:
-	rm -rf $(OBJS) 
+	@rm -rf $(OBJS) 
 
 fclean: clean
-	rm -rf $(NAME) $(TEST) 
-	rm a.out
+	@rm -rf $(NAME) $(TEST) 
+	@rm a.out
 
 re: fclean $(NAME)
 
 test: $(NAME)
-	gcc -no-pie $(FLAGS) main.c $(NAME)
-	./a.out
+	@gcc -no-pie $(FLAGS) main.c $(NAME)
+	@./a.out
 
 

@@ -28,21 +28,21 @@ int main ()
 
 // Pour ft_strcpy
 	printf("****STRLCPY****\n");
-	char dst[10] = "4y"; 
-	char src[10] = "cfdd";
+	char dst[10] = "salut"; 
+	char src[10] = "42";
 	STRCPY (dst, src);
 
 // Pour ft_strcmp
 	printf("****STRCMP****\n");
-	char *s2 = "obfddfeww";
-	char *s3 = "kjh";
+	char *s2 = "hello";
+	char *s3 = "salut";
 	STRCMP(s2, s3);
 
 // Pour ft_write
 	printf("****WRITE****\n");
 	int fd = open("test_write.txt", O_WRONLY);
 	//int fd = 1; 
-	char *s4 = "salut";
+	char *s4 = "salut\n";
 	int x = strlen(s);
 
 	printf("\twrite doit renvoyer %d\n", (int)write(fd, s4, x)); 
